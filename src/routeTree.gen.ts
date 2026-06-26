@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TerminiRouteImport } from './routes/termini'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -22,6 +23,11 @@ import { Route as OperaSlugRouteImport } from './routes/opera.$slug'
 const TerminiRoute = TerminiRouteImport.update({
   id: '/termini',
   path: '/termini',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termini': typeof TerminiRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termini': typeof TerminiRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/termini': typeof TerminiRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy'
     | '/shop'
+    | '/sitemap.xml'
     | '/termini'
     | '/opera/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy'
     | '/shop'
+    | '/sitemap.xml'
     | '/termini'
     | '/opera/$slug'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy'
     | '/shop'
+    | '/sitemap.xml'
     | '/termini'
     | '/opera/$slug'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   PrivacyRoute: typeof PrivacyRoute
   ShopRoute: typeof ShopRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TerminiRoute: typeof TerminiRoute
   OperaSlugRoute: typeof OperaSlugRoute
 }
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/termini'
       fullPath: '/termini'
       preLoaderRoute: typeof TerminiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   PrivacyRoute: PrivacyRoute,
   ShopRoute: ShopRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TerminiRoute: TerminiRoute,
   OperaSlugRoute: OperaSlugRoute,
 }
