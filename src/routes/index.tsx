@@ -190,5 +190,3 @@ export function SectionHeading({
     </div>
   );
 }
-
-export { Star };
