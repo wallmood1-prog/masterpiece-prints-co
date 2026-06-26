@@ -5,7 +5,6 @@ import {
   RotateCcw,
   Lock,
   Award,
-  Star,
   ArrowRight,
 } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
