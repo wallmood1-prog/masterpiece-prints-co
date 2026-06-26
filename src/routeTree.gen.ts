@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as CarrelloRouteImport } from './routes/carrello'
 import { Route as IndexRouteImport } from './routes/index'
@@ -24,6 +25,11 @@ const ShopRoute = ShopRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContattiRoute = ContattiRouteImport.update({
+  id: '/contatti',
+  path: '/contatti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChiSiamoRoute = ChiSiamoRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/carrello': typeof CarrelloRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/carrello': typeof CarrelloRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/carrello': typeof CarrelloRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
@@ -78,16 +87,25 @@ export interface FileRouteTypes {
     | '/'
     | '/carrello'
     | '/chi-siamo'
+    | '/contatti'
     | '/faq'
     | '/shop'
     | '/opera/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/carrello' | '/chi-siamo' | '/faq' | '/shop' | '/opera/$slug'
+  to:
+    | '/'
+    | '/carrello'
+    | '/chi-siamo'
+    | '/contatti'
+    | '/faq'
+    | '/shop'
+    | '/opera/$slug'
   id:
     | '__root__'
     | '/'
     | '/carrello'
     | '/chi-siamo'
+    | '/contatti'
     | '/faq'
     | '/shop'
     | '/opera/$slug'
@@ -97,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CarrelloRoute: typeof CarrelloRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
+  ContattiRoute: typeof ContattiRoute
   FaqRoute: typeof FaqRoute
   ShopRoute: typeof ShopRoute
   OperaSlugRoute: typeof OperaSlugRoute
@@ -116,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contatti': {
+      id: '/contatti'
+      path: '/contatti'
+      fullPath: '/contatti'
+      preLoaderRoute: typeof ContattiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chi-siamo': {
@@ -153,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CarrelloRoute: CarrelloRoute,
   ChiSiamoRoute: ChiSiamoRoute,
+  ContattiRoute: ContattiRoute,
   FaqRoute: FaqRoute,
   ShopRoute: ShopRoute,
   OperaSlugRoute: OperaSlugRoute,
