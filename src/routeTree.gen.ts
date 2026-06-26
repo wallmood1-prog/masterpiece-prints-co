@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
@@ -20,6 +21,11 @@ import { Route as OperaSlugRouteImport } from './routes/opera.$slug'
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/faq': typeof FaqRoute
+  '/privacy': typeof PrivacyRoute
   '/shop': typeof ShopRoute
   '/opera/$slug': typeof OperaSlugRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/contatti'
     | '/faq'
+    | '/privacy'
     | '/shop'
     | '/opera/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/contatti'
     | '/faq'
+    | '/privacy'
     | '/shop'
     | '/opera/$slug'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/contatti'
     | '/faq'
+    | '/privacy'
     | '/shop'
     | '/opera/$slug'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
   FaqRoute: typeof FaqRoute
+  PrivacyRoute: typeof PrivacyRoute
   ShopRoute: typeof ShopRoute
   OperaSlugRoute: typeof OperaSlugRoute
 }
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
   FaqRoute: FaqRoute,
+  PrivacyRoute: PrivacyRoute,
   ShopRoute: ShopRoute,
   OperaSlugRoute: OperaSlugRoute,
 }
