@@ -88,7 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Gallerivm: riproduzioni su tela dei capolavori più celebri al mondo, stampa ad alta definizione e materiali di qualità museale.",
       },
       { name: "author", content: "Gallerivm" },
-      { property: "og:title", content: "Gallerivm — Arte su tela di qualità museale" },
+      { property: "og:title", content: "Gallerivm — Riproduzioni d'arte su tela di qualità museale" },
       {
         property: "og:description",
         content: "Trasforma le tue pareti in opere d'arte con riproduzioni su tela premium.",
@@ -96,6 +96,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Gallerivm" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Gallerivm — Riproduzioni d'arte su tela di qualità museale" },
+      { name: "description", content: "Gallerivm is a premium e-commerce website selling high-quality reproductions of famous paintings on canvas." },
+      { property: "og:description", content: "Gallerivm is a premium e-commerce website selling high-quality reproductions of famous paintings on canvas." },
+      { name: "twitter:description", content: "Gallerivm is a premium e-commerce website selling high-quality reproductions of famous paintings on canvas." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5b14a429-843d-4706-b51f-976058c96d4e/id-preview-1114e326--23cacf2a-b550-425e-93cd-8b3204a6a2e8.lovable.app-1782517757502.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/5b14a429-843d-4706-b51f-976058c96d4e/id-preview-1114e326--23cacf2a-b550-425e-93cd-8b3204a6a2e8.lovable.app-1782517757502.png" },
     ],
     links: [
       {
